@@ -8,27 +8,27 @@
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
         <img src="../assets/icon/icon-idea.png" alt="logo">
-        <h1>Elearning</h1>
+        <h1>Trung Hiếu</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="Hệ Thống" nzIcon="radius-setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a routerLink="hethong/chinhanh">Quản lý chi nhánh</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/monitor">Monitor</a>
+            <a routerLink="hethong/quyen">Quản lý quyền</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
+          <a routerLink="hethong/taikhoan">Quản lý tài khoản</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Danh Mục" nzIcon="menu">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/basic-form">Basic Form</a>
+            <a routerLink="danhmuc/khachhang">Quản lý khách hàng</a>
           </li>
         </ul>
       </li>
