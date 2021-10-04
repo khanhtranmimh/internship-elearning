@@ -1,5 +1,5 @@
 export interface IData {
-    MST: number;
+    MST: string;
     tenmien?: string;
     tenchinhanh?: string;
     diachi?: string;

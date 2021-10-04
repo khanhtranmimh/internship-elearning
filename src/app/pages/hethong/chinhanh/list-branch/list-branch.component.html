@@ -1,39 +1,54 @@
-<span  *ngIf="h===false Then hd1 else hd2"></span>
-<ng-template #hd1>
-  <button #buttonThem nz-button nzType="primary" (click)="formBranch()">
-    <i nz-icon nzType="plus" nzTheme="outline"></i>Tạo chi nhánh
-  </button>
-  <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data">
-    <thead>
-      <tr>
-        <th>Mã số thuế</th>
-        <th>Tên miền</th>
-        <th>Tên chi nhánh</th>
-        <th>Địa chỉ</th>
-        <th>Trạng thái</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{data.MST}}</td>
-        <td>{{data.tenmien}}</td>
-        <td>{{data.tenchinhanh}}</td>
-        <td>{{data.diachi}}</td>
-        <td>{{data.trangthai}}</td>
-        <td>
-          <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
-              title="Xóa" (click)="removeBranch(data.MST)"></i></a>
-          &emsp;
-          <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
-            (click)="editBranch(data.MST)"></i></a>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
-</ng-template>
-<ng-template #hd2>
-  <app-branch-form (newItemEvent)="addItem($event)">
-  </app-branch-form>
-</ng-template>
-<!-- (newItemEvent)="addItem($event)" -->
+<span *ngIf="flagTT=== 1" style="font-size: 27px; font-weight: bold;">Quản lý chi nhánh</span>
+<span *ngIf="flagTT=== 2" style="font-size: 27px; font-weight: bold;">Thêm mới chi nhánh</span>
+<span *ngIf="flagTT=== 3" style="font-size: 27px; font-weight: bold;">Sửa chi nhánh</span>
+<br><br>
+<div style="position: relative;">
+  <span *ngIf="flag===false Then hd1 else hd2"></span>
+  <ng-template #hd1>
+    <button #buttonThem nz-button nzType="primary" (click)="formBranch()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>Tạo chi nhánh
+    </button>
+
+    <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
+      <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+      </ng-template>
+    </div>
+
+    <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data">
+      <thead>
+        <tr>
+          <th>Mã số thuế</th>
+          <th>Tên miền</th>
+          <th>Tên chi nhánh</th>
+          <th>Địa chỉ</th>
+          <th>Trạng thái</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{data.MST}}</td>
+          <td>{{data.tenmien}}</td>
+          <td>{{data.tenchinhanh}}</td>
+          <td>{{data.diachi}}</td>
+          <td>{{data.trangthai}}</td>
+          <td>
+            <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
+                title="Xóa" (click)="removeBranch(i)"></i></a>
+            &emsp;
+            <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
+                (click)="editBranch(i)"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </ng-template>
+  <ng-template #hd2>
+    <app-branch-form (newItemEvent)="addItem($event)" [item]="itemBranch" (backEvent)="backList($event)">
+    </app-branch-form>
+  </ng-template>
+</div>

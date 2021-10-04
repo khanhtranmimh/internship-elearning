@@ -9,7 +9,10 @@ import { IData } from '../data.module';
 })
 export class BranchFormComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
-  //@Input() item: any;
+  @Input() item: IData = { MST: '', tenmien: '', tenchinhanh: '', diachi: '', trangthai: 'false' };
+  @Output() backEvent = new EventEmitter();
+
+  backList:boolean = false;
 
   submitForm: FormGroup;
 
@@ -31,8 +34,6 @@ export class BranchFormComponent implements OnInit {
   onSubmit(){
     const valid = this.submitForm.valid;
     if(valid){
-      // console.log('go :>> ');
-      // console.log('this.submitForm.value :>> ', this.submitForm.value);
       this.newItemEvent.emit(this.submitForm.value);
     }else{
       for (const i in this.submitForm.controls) {
@@ -41,7 +42,10 @@ export class BranchFormComponent implements OnInit {
           this.submitForm.controls[i].updateValueAndValidity();
         }
       }
-      console.log('Chưa nhập đủ trường :>> ');
     }
+  }
+
+  back(){
+    this.backEvent.emit(this.backList);
   }
 }
