@@ -9,7 +9,7 @@ import { IData } from '../data.module';
 })
 export class BranchFormComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
-  @Input() item: any;
+  //@Input() item: any;
 
   submitForm: FormGroup;
 
@@ -17,7 +17,7 @@ export class BranchFormComponent implements OnInit {
     public fb: FormBuilder,
   ) {
     this.submitForm = this.fb.group({
-      MST: [this.item, [Validators.required]],
+      MST: [null, [Validators.required]],
       tenmien: [null, Validators.required],
       tenchinhanh: [null, [Validators.required, Validators.minLength(6)]],
       diachi: [null, Validators.required],

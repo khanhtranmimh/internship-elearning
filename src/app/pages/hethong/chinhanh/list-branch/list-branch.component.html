@@ -33,7 +33,7 @@
   </nz-table>
 </ng-template>
 <ng-template #hd2>
-  <app-branch-form [item]="test">
+  <app-branch-form (newItemEvent)="addItem($event)">
   </app-branch-form>
 </ng-template>
 <!-- (newItemEvent)="addItem($event)" -->

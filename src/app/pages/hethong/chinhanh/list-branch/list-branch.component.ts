@@ -9,7 +9,7 @@ import { IData } from '../data.module';
 export class ListBranchComponent implements OnInit {
   h: boolean = false;
   a: any;
-  test = "hieu";
+  //test = "hieu";
   data: IData[] = [
     { MST: 1, tenmien: 'abc', tenchinhanh: 'Chi Nhánh 1', diachi: 'Hà Nội', trangthai: 'false' },
     { MST: 2, tenmien: 'xyz', tenchinhanh: 'Chi Nhánh 2', diachi: 'Hà Nội', trangthai: 'false' },
@@ -36,9 +36,9 @@ export class ListBranchComponent implements OnInit {
   }
 
   editBranch(MST:any){
-    const index = this.data.findIndex(branch => branch.MST === MST);
-    this.a= this.data[index];
-    this.h = true;
+    // const index = this.data.findIndex(branch => branch.MST === MST);
+    // this.a= this.data[index];
+    // this.h = true;
     // this.a = [...this.a];
     // console.log(this.a);
   }
