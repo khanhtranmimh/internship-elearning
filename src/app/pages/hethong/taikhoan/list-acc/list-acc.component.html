@@ -1,12 +1,12 @@
-<span *ngIf="flagTT=== 1" style="font-size: 27px;">Quản lý chi nhánh</span>
-<span *ngIf="flagTT=== 2" style="font-size: 27px;">Thêm mới chi nhánh</span>
-<span *ngIf="flagTT=== 3" style="font-size: 27px;">Sửa chi nhánh</span>
+<span *ngIf="flagTT=== 1" style="font-size: 27px;">Quản lý tài khoản</span>
+<span *ngIf="flagTT=== 2" style="font-size: 27px;">Thêm mới tài khoản</span>
+<span *ngIf="flagTT=== 3" style="font-size: 27px;">Sửa tài khoản</span>
 <br><br>
 <div style="position: relative;">
   <span *ngIf="flag===false Then hd1 else hd2"></span>
   <ng-template #hd1>
-    <button #buttonThem nz-button nzType="primary" (click)="formBranch()">
-      <i nz-icon nzType="plus" nzTheme="outline"></i>Tạo chi nhánh
+    <button #buttonThem nz-button nzType="primary" (click)="formAcc()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>Tạo mới
     </button>
 
     <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
@@ -24,27 +24,25 @@
         <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
         <thead>
           <tr>
-            <th>Mã số thuế</th>
-            <th>Tên miền</th>
-            <th>Tên chi nhánh</th>
-            <th>Địa chỉ</th>
-            <th>Trạng thái</th>
+            <th>Tài khoản</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data; let i = index">
-            <td>{{data.MST}}</td>
-            <td>{{data.tenmien}}</td>
-            <td>{{data.tenchinhanh}}</td>
-            <td>{{data.diachi}}</td>
-            <td>{{data.trangthai}}</td>
+            <td>{{data.taikhoan}}</td>
+            <td>{{data.hoten}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.sdt}}</td>
             <td>
               <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
-                  title="Xóa" (click)="removeBranch(i)"></i></a>
+                  title="Xóa tài khoản" (click)="removeAcc(i)"></i></a>
               &emsp;
-              <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
-                  (click)="editBranch(i)"></i></a>
+              <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa tài khoản"
+                  (click)="editAcc(i)"></i></a>
             </td>
           </tr>
         </tbody>
@@ -52,7 +50,7 @@
     </div>
   </ng-template>
   <ng-template #hd2>
-    <app-branch-form (newItemEvent)="addItem($event)" [item]="itemBranch" (backEvent)="backList($event)">
-    </app-branch-form>
+    <app-form-acc (newItemEvent)="addItem($event)" [item]="itemAcc" (backEvent)="backList($event)">
+    </app-form-acc>
   </ng-template>
 </div>

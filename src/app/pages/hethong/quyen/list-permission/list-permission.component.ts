@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { IData } from '../data.module';
+import { IData } from '../../quyen/data.model';
 
 @Component({
-  selector: 'app-list-branch',
-  templateUrl: './list-branch.component.html',
-  styleUrls: ['./list-branch.component.css']
+  selector: 'app-list-permission',
+  templateUrl: './list-permission.component.html',
+  styleUrls: ['./list-permission.component.css']
 })
-export class ListBranchComponent implements OnInit {
+export class ListPermissionComponent implements OnInit {
+
   subIndex:number = -1;
   flag: boolean = false;
   flagTT:number = 1;
-  itemBranch: IData ={MST: '', tenmien: '', tenchinhanh: '', diachi: '', trangthai: '' }
+  itemBranch: IData ={}
   data: IData[] = [
-    { MST: '1', tenmien: 'abc', tenchinhanh: 'Chi Nhánh 1', diachi: 'Hà Nội', trangthai: 'false' },
-    { MST: '2', tenmien: 'xyz', tenchinhanh: 'Chi Nhánh 2', diachi: 'Hà Nội', trangthai: 'false' },
-    { MST: '3', tenmien: 'mien', tenchinhanh: 'Chi Nhánh 3', diachi: 'Hà Nội', trangthai: 'false' }];
+    { tenquyen: 'abc', quyenqltaikhoan: true, quyenqlquyen: true, quyenqlchinhanh: true, quyenqlkhachhang: false },
+    { tenquyen: 'ayz', quyenqltaikhoan: true, quyenqlquyen: true, quyenqlchinhanh: true, quyenqlkhachhang: true },
+    { tenquyen: '123', quyenqltaikhoan: true, quyenqlquyen: true, quyenqlchinhanh: true, quyenqlkhachhang: false }];
   
   dataBetween:IData[]= this.data;
   // dataBetween để làm data trung gian cho lúc tìm kiếm nên mỗi lần thêm sửa xóa phải gán lại data = dataBetween.
@@ -22,8 +23,6 @@ export class ListBranchComponent implements OnInit {
   pageIndex: number = 1;
   pageSize: number = 2;
   total:number = this.data.length;
-  // pageIndexChange:number = 1;
-    
   constructor() { }
 
   ngOnInit(): void {
@@ -44,7 +43,7 @@ export class ListBranchComponent implements OnInit {
   }
   refresh(){
     this.subIndex = -1;
-    this.itemBranch = {MST: '', tenmien: '', tenchinhanh: '', diachi: '', trangthai: '' }
+    this.itemBranch = {}
   }
 
   backList(subFlag:boolean){
@@ -78,10 +77,11 @@ export class ListBranchComponent implements OnInit {
     this.dataSearch=[];
     this.subSearch = keyword.target.value;
     for(const i in this.data){
-      if(this.data[i].tenchinhanh?.indexOf(this.subSearch) !== -1){
+      if(this.data[i].tenquyen?.indexOf(this.subSearch) !== -1){
         this.dataSearch.push(this.data[i]);
       }
     }
     this.data=this.dataSearch;
   }
+
 }

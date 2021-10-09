@@ -13,6 +13,10 @@ import { AntDesignModule } from 'src/app/share/ant-design.module';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListPermissionComponent } from './quyen/list-permission/list-permission.component';
+import { FormPermissionComponent } from './quyen/form-permission/form-permission.component';
+import { ListAccComponent } from './taikhoan/list-acc/list-acc.component';
+import { FormAccComponent } from './taikhoan/form-acc/form-acc.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     QuyenComponent,
     TaikhoanComponent,
     BranchFormComponent,
-    ListBranchComponent
+    ListBranchComponent,
+    ListPermissionComponent,
+    FormPermissionComponent,
+    ListAccComponent,
+    FormAccComponent
   ],
   imports: [
     CommonModule,

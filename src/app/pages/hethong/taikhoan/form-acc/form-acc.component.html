@@ -1,0 +1,67 @@
+<form nz-form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+  <div style="border: 1px solid rgb(83, 83, 202); position: relative;">
+    <div style="position: absolute; height: 30px; width: 100%; left: 0px; top: 0px; background: rgb(83, 83, 202);">
+      <span style="font-size: 18px; color: white;">
+        Thông tin tài khoản
+      </span>
+    </div>
+    <div style="margin-top: 80px">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Họ tên</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Chưa nhập họ tên">
+          <input nz-input type="text" [ngModel]="item.hoten" formControlName="hoten" name="hoten">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Email</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input type="text" [ngModel]="item.email" formControlName="email" name="email">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Số điện thoại</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input type="text" [ngModel]="item.sdt" formControlName="sdt" name="sdt">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Tài khoản</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input type="text" [ngModel]="item.taikhoan" formControlName="taikhoan" name="taikhoan">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Mật khẩu</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input type="text" [ngModel]="item.matkhau" formControlName="matkhau" name="matkhau">
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Quyền</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <!-- [nzMaxMultipleCount]="3" bị lỗi max số lượng chọn-->
+          <nz-select style="width:300px" nzShowSearch nzAllowClear="true" nzPlaceHolder="Chọn quyền tài khoản"
+            [(ngModel)]="item.quyen" formControlName="quyen">
+            <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
+            <nz-option nzLabel="Kế toán" nzValue="Kế toán"></nz-option>
+            <nz-option nzLabel="a" nzValue="a"></nz-option>
+            <nz-option nzLabel="b" nzValue="b"></nz-option>
+            <nz-option nzLabel="c" nzValue="c"></nz-option>
+            <nz-option nzLabel="d" nzValue="d"></nz-option>
+          </nz-select>
+          <!-- <input nz-input type="text" [ngModel]="item.quyen" formControlName="quyen" name="quyen"> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div style="position: relative; height: 50px; margin-top: 50px;">
+    <button class="luu" nz-button nzType="primary" type="submit">
+      Lưu
+    </button>
+    <button class="back" nz-button nzType="primary" type="" (click)="back()">
+      Trở về
+    </button>
+  </div>
+</form>
