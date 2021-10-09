@@ -7,38 +7,39 @@
     </div>
     <div style="margin-top: 80px">
       <nz-form-item>
-        <nz-form-label [nzSpan]="6">Họ tên</nz-form-label>
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Họ tên</nz-form-label>
         <nz-form-control [nzSpan]="14" nzErrorTip="Chưa nhập họ tên">
           <input nz-input type="text" [ngModel]="item.hoten" formControlName="hoten" name="hoten">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="6">Email</nz-form-label>
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Email</nz-form-label>
         <nz-form-control [nzSpan]="14">
           <input nz-input type="text" [ngModel]="item.email" formControlName="email" name="email">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="6">Số điện thoại</nz-form-label>
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Số điện thoại</nz-form-label>
         <nz-form-control [nzSpan]="14">
           <input nz-input type="text" [ngModel]="item.sdt" formControlName="sdt" name="sdt">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="6">Tài khoản</nz-form-label>
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Tài khoản</nz-form-label>
         <nz-form-control [nzSpan]="14">
           <input nz-input type="text" [ngModel]="item.taikhoan" formControlName="taikhoan" name="taikhoan">
         </nz-form-control>
+        <!-- *ngIf="flag === false Then [disabled]='true' else [disabled]='false'" -->
       </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="6">Mật khẩu</nz-form-label>
+      <nz-form-item *ngIf="flag=== false">
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Mật khẩu</nz-form-label>
         <nz-form-control [nzSpan]="14">
           <input nz-input type="text" [ngModel]="item.matkhau" formControlName="matkhau" name="matkhau">
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="6">Quyền</nz-form-label>
+        <nz-form-label [nzSpan]="6" style="font-weight: bold;">Quyền</nz-form-label>
         <nz-form-control [nzSpan]="14">
           <!-- [nzMaxMultipleCount]="3" bị lỗi max số lượng chọn-->
           <nz-select style="width:300px" nzShowSearch nzAllowClear="true" nzPlaceHolder="Chọn quyền tài khoản"

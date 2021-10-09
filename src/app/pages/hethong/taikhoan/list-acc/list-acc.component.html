@@ -50,7 +50,9 @@
     </div>
   </ng-template>
   <ng-template #hd2>
-    <app-form-acc (newItemEvent)="addItem($event)" [item]="itemAcc" (backEvent)="backList($event)">
+    <app-form-acc (newItemEvent)="addItem($event)" [item]="itemAcc" (backEvent)="backList($event)"
+      [flag]="editFlag"
+    >
     </app-form-acc>
   </ng-template>
 </div>

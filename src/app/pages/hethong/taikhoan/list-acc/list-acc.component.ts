@@ -14,6 +14,7 @@ export class ListAccComponent implements OnInit {
   subIndex:number = -1;
   flag: boolean = false;
   flagTT:number = 1;
+  editFlag: boolean = false;
   itemAcc: IData = {};
   
   dataBetween:IData[]= this.data;
@@ -56,6 +57,7 @@ export class ListAccComponent implements OnInit {
   formAcc(){
     this.flag = true;
     this.flagTT = 2;
+    this.editFlag=false;
   }
 
   removeAcc(index:number){
@@ -69,6 +71,7 @@ export class ListAccComponent implements OnInit {
     this.itemAcc = {...this.data[index]};
     this.flag = true;
     this.flagTT = 3;
+    this.editFlag = true;
   }
   
   dataSearch: IData[] = [];

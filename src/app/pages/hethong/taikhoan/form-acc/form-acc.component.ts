@@ -11,6 +11,7 @@ import { IData } from '../data.model';
 export class FormAccComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
   @Input() item: IData = {};
+  @Input() flag:boolean = false;
   @Output() backEvent = new EventEmitter();
 
   backList:boolean = false;
