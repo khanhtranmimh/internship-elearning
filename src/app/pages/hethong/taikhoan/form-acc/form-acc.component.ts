@@ -11,10 +11,10 @@ import { IData } from '../data.model';
 export class FormAccComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
   @Input() item: IData = {};
-  @Input() flag:boolean = false;
+  @Input() flag: boolean = false;
   @Output() backEvent = new EventEmitter();
 
-  backList:boolean = false;
+  backList: boolean = false;
 
   submitForm: FormGroup;
 
@@ -25,21 +25,24 @@ export class FormAccComponent implements OnInit {
       hoten: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       sdt: [null, [Validators.required, Validators.minLength(10)]],
-      taikhoan: [null, Validators.required],
+      taikhoan: [null, [Validators.required]],
       matkhau: [null, Validators.required],
-      quyen:[null, Validators.required],
+      quyen: [null, Validators.required],
     })
   }
 
   ngOnInit(): void {
+    if (this.flag) {
+      this.submitForm.get('taikhoan')?.disable();
+    }
   }
 
-  onSubmit(){
+  onSubmit() {
     const valid = this.submitForm.valid;
-    if(valid){
+    if (valid) {
       this.newItemEvent.emit(this.submitForm.value);
       //console.log(this.submitForm.value);
-    }else{
+    } else {
       for (const i in this.submitForm.controls) {
         if (this.submitForm.controls.hasOwnProperty(i)) {
           this.submitForm.controls[i].markAsDirty();
@@ -49,7 +52,7 @@ export class FormAccComponent implements OnInit {
     }
   }
 
-  back(){
+  back() {
     this.backEvent.emit(this.backList);
-  } 
+  }
 }
