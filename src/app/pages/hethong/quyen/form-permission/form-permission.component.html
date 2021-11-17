@@ -1,3 +1,5 @@
+<span *ngIf="flag=== true" style="font-size: 27px;">Thêm mới quyền tài khoản</span>
+<span *ngIf="flag=== false" style="font-size: 27px;">Sửa quyền tài khoản</span>
 <br><br>
 <div style="border: 1px solid rgb(83, 83, 202); position: relative;">
   <div style="position: absolute; height: 30px; width: 100%; left: 0px; top: 0px; background: rgb(83, 83, 202);">
@@ -8,7 +10,7 @@
   <div nz-row style="margin-left: 50px; margin-top: 80px">
     <div nz-col nzSpan="2"><span style="font-weight: bold; font-size: 18px;">Tên:</span></div>
     <div nz-col nzSpan="22">
-      <span><input nz-input placeholder="Nhập tên quyền" [(ngModel)]="dataPermission.tenquyen" /></span>
+      <span><input nz-input placeholder="Nhập tên quyền" [(ngModel)]="dataPermission.Name" /></span>
     </div>
   </div><br>
   <label style="font-weight: bold; font-style: italic; font-size: 18px;" nz-checkbox
@@ -55,10 +57,21 @@
       [(ngModel)]="dataPermission.quyenqlkhachhang">Xóa khách hàng</label>
   </div><br><br>
 
+  <label style="font-weight: bold; font-style: italic; font-size: 18px;" nz-checkbox
+    [(ngModel)]="dataPermission.quyenqlInvoice">Quản lý hóa đơn đầu vào</label><br>
+  <div style="display:flex; margin-left: 50px">
+    <label nzDisabled style="font-size: 14px; font-weight: bold;" nz-checkbox
+      [(ngModel)]="dataPermission.quyenqlInvoice">Thêm hóa đơn</label>
+    <label nzDisabled style="font-size: 14px; margin-left: 50px; font-weight: bold;" nz-checkbox
+      [(ngModel)]="dataPermission.quyenqlInvoice">Sửa thông tin hóa đơn</label>
+    <label nzDisabled style="font-size: 14px; margin-left: 50px; font-weight: bold;" nz-checkbox
+      [(ngModel)]="dataPermission.quyenqlInvoice">Xóa hóa đơn</label>
+  </div><br><br>
+
 </div>
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
-  <button class="luu" nz-button nzType="primary" type="" (click)="save()">
+  <button class="luu" nz-button nzType="primary" type="" (click)="Save()">
     Lưu
   </button>
   <button class="back" nz-button nzType="primary" type="" (click)="back()">

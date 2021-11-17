@@ -1,4 +1,7 @@
-<form nz-form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+<span *ngIf="flag=== true" style="font-size: 27px;">Thêm mới chi nhánh</span>
+<span *ngIf="flag=== false" style="font-size: 27px;">Sửa chi nhánh</span>
+<br><br>
+<form nz-form [formGroup]="submitForm">
   <div style="border: 1px solid rgb(83, 83, 202); position: relative;">
     <div style="position: absolute; height: 30px; width: 100%; left: 0px; top: 0px; background: rgb(83, 83, 202);">
       <span style="font-size: 18px; color: white;">
@@ -9,36 +12,36 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="6" nzFor="tenmien" style="font-weight: bold;">Tên miền</nz-form-label>
         <nz-form-control [nzSpan]="14" nzErrorTip="Chưa nhập tên miền">
-          <input nz-input type="text" [ngModel]="item.tenmien" formControlName="tenmien" name="tenmien">
+          <input nz-input type="text" formControlName="tenmien">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSpan]="6" nzFor="MST" style="font-weight: bold;">Mã số thuế</nz-form-label>
         <nz-form-control [nzSpan]="14">
-          <input nz-input type="text" [ngModel]="item.MST" formControlName="MST" name="MST">
+          <input nz-input type="text" formControlName="MST">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSpan]="6" nzFor="tenchinhanh" style="font-weight: bold;">Tên tiếng việt</nz-form-label>
         <nz-form-control [nzSpan]="14">
-          <input nz-input type="text" [ngModel]="item.tenchinhanh" formControlName="tenchinhanh" name="tenchinhanh">
+          <input nz-input type="text" formControlName="tenchinhanh">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSpan]="6" nzFor="diachi" style="font-weight: bold;">Địa chỉ</nz-form-label>
         <nz-form-control [nzSpan]="14">
-          <input nz-input type="text" [ngModel]="item.diachi" formControlName="diachi" name="diachi">
+          <input nz-input type="text" formControlName="diachi">
         </nz-form-control>
       </nz-form-item>
     </div>
   </div>
-
-  <div style="position: relative; height: 50px; margin-top: 50px;">
-    <button class="luu" nz-button nzType="primary" type="submit">
-      Lưu
-    </button>
-    <button class="back" nz-button nzType="primary" type="" (click)="back()">
-      Trở về
-    </button>
-  </div>
 </form>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+  <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+    Lưu
+  </button>
+  <button class="back" nz-button nzType="primary" (click)="back()">
+    Trở về
+  </button>
+</div>

@@ -1,49 +1,45 @@
-<span *ngIf="flagTT=== 1" style="font-size: 27px;">Quản lý quyền</span>
-<span *ngIf="flagTT=== 2" style="font-size: 27px;">Thêm mới quyền</span>
-<span *ngIf="flagTT=== 3" style="font-size: 27px;">Sửa thông tin quyền</span>
+<span style="font-size: 27px;">Quản lý quyền</span>
 <br><br>
 <div style="position: relative;">
-  <span *ngIf="flag===false Then hd1 else hd2"></span>
-  <ng-template #hd1>
-    <button #buttonThem nz-button nzType="primary" (click)="formBranch()">
-      <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm mới
-    </button>
+  <button #buttonThem nz-button nzType="primary" (click)="addPermission()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm mới
+  </button>
 
-    <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
-      <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-        <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
-      </nz-input-group>
-      <ng-template #suffixIconButton>
-        <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
-      </ng-template>
-    </div>
+  <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+    </ng-template>
+  </div>
 
-    <div style="border-top: 2px solid rgb(83, 83, 190); margin-top: 50px">
-      <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
-        [nzPageSize]="pageSize" [nzTotal]="total">
-        <thead>
-          <tr>
-            <th>Tên</th>
-            <th style="width: 10%;">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of basicTable.data; let i = index">
-            <td>{{data.tenquyen}}</td>
-            <td>
-              <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
-                  title="Xóa" (click)="removeBranch(i)"></i></a>
-              &emsp;
-              <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
-                  (click)="editBranch(i)"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
-    </div>
-  </ng-template>
+  <div style="border-top: 2px solid rgb(83, 83, 190); margin-top: 50px">
+    <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
+      [nzPageSize]="pageSize" [nzTotal]="total">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th style="width: 10%;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.name}}</td>
+          <td>
+            <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
+                title="Xóa" (click)="removePermission(data.id)"></i></a>
+            &emsp;
+            <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
+                (click)="editPermission(data.id)"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <!-- </ng-template>
   <ng-template #hd2>
     <app-form-permission (newItemEvent)="addItem($event)" [dataPermission]="itemBranch" (backEvent)="backList($event)">
     </app-form-permission>
-  </ng-template>
+  </ng-template> -->
 </div>

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IData } from '../data.module';
+import { ActivatedRoute} from '@angular/router';
+import { BranchService } from '../branch.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-branch-form',
@@ -8,15 +10,21 @@ import { IData } from '../data.module';
   styleUrls: ['./branch-form.component.css']
 })
 export class BranchFormComponent implements OnInit {
-  @Output() newItemEvent = new EventEmitter();
-  @Input() item: IData = { MST: '', tenmien: '', tenchinhanh: '', diachi: '', trangthai: 'false' };
-  @Output() backEvent = new EventEmitter();
+  // @Output() newItemEvent = new EventEmitter();
+  // @Input() item: IData = { MST: '', tenmien: '', tenchinhanh: '', diachi: '', trangthai: 'false' };
+  // @Output() backEvent = new EventEmitter();
 
-  backList:boolean = false;
+  // backList:boolean = false;
+  isShowCreateOrUpdate: boolean= false; //false: tạo, true: sửa
+  ids = this.route.snapshot.paramMap.get('id');
+  flag = true;
 
   submitForm: FormGroup;
 
   constructor(
+    private _location: Location,
+    private route: ActivatedRoute,
+    public branchService: BranchService,
     public fb: FormBuilder,
   ) {
     this.submitForm = this.fb.group({
@@ -24,17 +32,64 @@ export class BranchFormComponent implements OnInit {
       tenmien: [null, Validators.required],
       tenchinhanh: [null, [Validators.required, Validators.minLength(6)]],
       diachi: [null, Validators.required],
-      trangthai: 'false'
     })
   }
 
   ngOnInit(): void {
+    //console.log(ids);
+    //this.isShowCreateOrUpdate = false;
+    if (String(this.ids) !== '0') {
+      this.isShowCreateOrUpdate = true;
+      this.loadData(this.ids);
+      this.flag = false;
+    }
+  }
+
+  public loadData(id: any) {
+    this.branchService.getInfoBranchByID(id).subscribe((data) => {
+      // for (const controlName in this.SVForm.controls) {
+      //   if (controlName) {
+      //     this.SVForm.controls[controlName].setValue(data[controlName]);
+      //   }
+      // }
+
+      this.submitForm.patchValue({
+        tenmien: data.url,
+        MST: data.mst,
+        tenchinhanh: data.nameBranch,
+        diachi: data.address,
+      })
+      //console.log("data", data);
+    });
   }
 
   onSubmit(){
     const valid = this.submitForm.valid;
     if(valid){
-      this.newItemEvent.emit(this.submitForm.value);
+      if (this.isShowCreateOrUpdate) { // Update
+        const params = {
+          id: this.ids,
+          mst: this.submitForm.get('MST')?.value,
+          url: this.submitForm.get('tenmien')?.value,
+          nameBranch: this.submitForm.get('tenchinhanh')?.value,
+          address: this.submitForm.get('diachi')?.value,
+          status: "false",
+        }
+        this.branchService.updateBranch(params).subscribe((data) => {
+          this._location.back();
+        })
+      } else { // CREATE
+        const params = {
+          mst: this.submitForm.get('MST')?.value,
+          url: this.submitForm.get('tenmien')?.value,
+          nameBranch: this.submitForm.get('tenchinhanh')?.value,
+          address: this.submitForm.get('diachi')?.value,
+          status: "false",
+        }
+        this.branchService.createBranch(params).subscribe((data) => {
+          this._location.back();
+        })
+      }
     }else{
       for (const i in this.submitForm.controls) {
         if (this.submitForm.controls.hasOwnProperty(i)) {
@@ -46,6 +101,6 @@ export class BranchFormComponent implements OnInit {
   }
 
   back(){
-    this.backEvent.emit(this.backList);
+    this._location.back();
   }
 }
