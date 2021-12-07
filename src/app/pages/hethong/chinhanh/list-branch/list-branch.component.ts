@@ -25,6 +25,7 @@ export class ListBranchComponent implements OnInit {
   public loadData(){
     this.branchService.getListBranch().subscribe((data) => {
       this.data = data.items;
+      //this.data = data;
       this.total = this.data.length;
     })
   }
@@ -47,10 +48,16 @@ export class ListBranchComponent implements OnInit {
     // let params = {
     //   keyword: keyword.target.value
     // }
+
     this.branchService.getListBranch(keyword.target.value).subscribe((data) =>{
-      //Gán lại data để hiển thị tìm kiếm.
       this.data = data.items;
       this.total = this.data.length;
     })
+   
+    // this.branchService.getListBranch(keyword.target.value).subscribe((data) =>{
+    //   this.data = data;
+    //   this.total = this.data.length;
+    // })
+    //console.log(keyword);
   }
 }

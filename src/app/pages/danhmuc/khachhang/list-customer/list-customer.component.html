@@ -1,0 +1,53 @@
+<span style="font-size: 27px;">Quản lý khách hàng</span>
+<br><br>
+<div style="position: relative;">
+    <!-- <span *ngIf="flag===false Then hd1 else hd2"></span> -->
+    <!-- <ng-template #hd1> -->
+    <button #buttonThem nz-button nzType="primary" (click)="addCustomer()">
+        <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm khách hàng
+    </button>
+
+    <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+        </ng-template>
+    </div>
+
+    <div class="tableCustomer" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+        <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
+            [nzPageSize]="pageSize" [nzTotal]="total">
+            <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
+            <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Họ tên</th>
+                    <th>Mã số thuế</th>
+                    <th>Địa chỉ</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>{{data.customerId}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.taxCode}}</td>
+                    <td>{{data.address}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.sdt}}</td>
+                    <td>
+                        <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close"
+                                nzTheme="outline" title="Xóa" (click)="removeCustomer(data.id)"></i></a>
+                        &emsp;
+                        <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
+                                (click)="editCustomer(data.id)"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

@@ -39,21 +39,12 @@ export class FormPermissionComponent implements OnInit {
 
   public loadData(id: any) {
     this.permissionService.getInfoPermissionByID(id).subscribe((data) => {
-      // this.dataPermission.patchValue({
-      //   Name: data.name,
-      //   quyenqltaikhoan: data.userPermission,
-      //   quyenqlquyen: data.perPermission,
-      //   quyenqlchinhanh: data.branchPermission,
-      //   quyenqlkhachhang: data.customerPermission,
-      //   quyenqlInvoice: data.invoicePermision,
-      // })
       this.dataPermission.Name = data.name;
       this.dataPermission.quyenqltaikhoan = data.userPermission;
       this.dataPermission.quyenqlquyen = data.perPermission;
       this.dataPermission.quyenqlchinhanh = data.branchPermission;
       this.dataPermission.quyenqlkhachhang = data.customerPermission;
       this.dataPermission.quyenqlInvoice = data.invoicePermision;
-      //console.log("data", data);
     });
   }
 

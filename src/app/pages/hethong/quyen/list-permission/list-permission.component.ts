@@ -34,8 +34,9 @@ export class ListPermissionComponent implements OnInit {
 
   public loadData(){
     this.permissionService.getListPermission().subscribe((data) => {
-      this.data = data.items;
+      this.data = data;
       this.total = this.data.length;
+      //console.log(data);
     })
   }
 

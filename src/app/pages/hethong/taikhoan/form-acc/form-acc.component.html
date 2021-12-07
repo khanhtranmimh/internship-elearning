@@ -40,19 +40,12 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="6" style="font-weight: bold;">Quyền</nz-form-label>
         <nz-form-control [nzSpan]="14">
-          <!-- [nzMaxMultipleCount]="3" bị lỗi max số lượng chọn-->
-          <nz-select style="width:300px" nzShowSearch nzAllowClear="true" nzPlaceHolder="Chọn quyền tài khoản"
-            [(ngModel)]="item.quyen" formControlName="quyen">
-            <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
-            <nz-option nzLabel="Kế toán" nzValue="Kế toán"></nz-option>
-            <nz-option nzLabel="a" nzValue="a"></nz-option>
-            <nz-option nzLabel="b" nzValue="b"></nz-option>
-            <nz-option nzLabel="c" nzValue="c"></nz-option>
-            <nz-option nzLabel="d" nzValue="d"></nz-option>
-          </nz-select>
-          <!-- <input nz-input type="text" [ngModel]="item.quyen" formControlName="quyen" name="quyen"> -->
+          <div *ngFor="let item of dataPer">
+            <input nz-input type="radio"  formControlName="quyen" value="{{item.id}}">{{item.name}}
+          </div>
         </nz-form-control>
       </nz-form-item>
+
     </div>
   </div>
 
@@ -65,3 +58,18 @@
     </button>
   </div>
 </form>
+
+<!-- <nz-form-item>
+  <nz-form-label [nzSpan]="6" style="font-weight: bold;">Quyền</nz-form-label>
+  <nz-form-control [nzSpan]="14">
+    <nz-select style="width:300px" nzShowSearch nzAllowClear="true" nzPlaceHolder="Chọn quyền tài khoản"
+      [(ngModel)]="item.quyen" formControlName="quyen">
+      <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
+      <nz-option nzLabel="Kế toán" nzValue="Kế toán"></nz-option>
+      <nz-option nzLabel="a" nzValue="a"></nz-option>
+      <nz-option nzLabel="b" nzValue="b"></nz-option>
+      <nz-option nzLabel="c" nzValue="c"></nz-option>
+      <nz-option nzLabel="d" nzValue="d"></nz-option>
+    </nz-select>
+  </nz-form-control>
+</nz-form-item> -->

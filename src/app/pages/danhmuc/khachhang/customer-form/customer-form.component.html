@@ -1,0 +1,153 @@
+<span style="font-size: 27px;">Thông tin khách hàng</span>
+<br><br>
+<form nz-form [formGroup]="submitForm">
+  <div>
+    <div style="border-top: 2px solid #66CCFF; border-bottom: 1px solid #DDDDDD;">
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="customerId" style="font-weight: bold;">Mã khách hàng</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập mã khách hàng" formControlName="customerId">
+          </nz-form-control>
+        </nz-form-item>
+      </div><div class="col-6">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="customerId" style="font-weight: bold;">Mã khách hàng</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập mã khách hàng" formControlName="customerId">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div id="divform" style="margin-top: 30px;">
+
+      <div style="display:flex">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="customerId" style="font-weight: bold;">Mã khách hàng</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập mã khách hàng" formControlName="customerId">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item style="margin-left: 110px;">
+          <nz-form-label [nzSpan]="0" nzFor="taxCode" style="font-weight: bold;">Mã số thuế</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập mã số thuế" formControlName="taxCode">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <!-- <label for="" style="font-weight: bold;">Tên công ty</label>
+        <input style="margin-left: 25px;" type="text" placeholder="Nhập tên công ty" formControlName="fullName"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="fullName" style="font-weight: bold;">Tên công ty</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input nz-input type="text" placeholder="Nhập tên công ty" formControlName="fullName">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <!-- <label for="" style="font-weight: bold;">Địa chỉ công ty</label>
+        <input type="text" formControlName="address" placeholder="Nhập địa chỉ công ty"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="address" style="font-weight: bold;">Địa chỉ công ty</nz-form-label>
+          <nz-form-control [nzSpan]="19">
+            <input nz-input type="text" placeholder="Nhập địa chỉ công ty" formControlName="address">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <nz-form-label [nzSpan]="0" nzFor="" style="font-weight: bold;">Tỉnh/Thành phố</nz-form-label>
+        <nz-select style="width: 300px;" formControlName="city" nzShowSearch nzAllowClear nzPlaceHolder="Chọn tỉnh/thành phố" [(ngModel)]="selectedValue">
+          <nz-option *ngFor="let city of Citys" nzLabel="{{city}}" nzValue="{{city}}">
+          </nz-option>
+        </nz-select>
+      </div><br>
+
+      <div>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="" style="font-weight: bold;">Quận/Huyện</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input nz-input type="text" placeholder="Nhập quận/huyện" formControlName="district">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div style="display:flex">
+        <!-- <label for="" style="font-weight: bold;">Đại diện pháp nhân</label>
+        <input size="50" type="text" formControlName="legalName" placeholder="Nhập đại diện pháp nhân"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="legalName" style="font-weight: bold;">Đại diện pháp nhân</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập đại diện pháp nhân" formControlName="legalName">
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- <label for="" style="font-weight: bold;">Số tài khoản</label>
+        <input size="35" type="text" formControlName="bankAcount" placeholder="Nhập số tài khoản"> -->
+        <nz-form-item style="margin-left: 80px;">
+          <nz-form-label [nzSpan]="0" nzFor="bankAcount" style="font-weight: bold;">Số tài khoản</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập số tài khoản" formControlName="bankAcount">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <!-- <label for="" style="font-weight: bold;">Tên ngân hàng</label>
+        <input style="margin-left: 10px;" type="text" formControlName="bankName" placeholder="Nhập tên ngân hàng"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="bankName" style="font-weight: bold;">Tên ngân hàng</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input nz-input type="text" placeholder="Nhập tên ngân hàng" formControlName="bankName">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div style="display:flex;">
+        <!-- <label for="" style="font-weight: bold;">Số điện thoại</label>
+        <input style="margin-left: 10px;" size="50" type="text" formControlName="phone" placeholder="Nhập số điện thoại"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="phone" style="font-weight: bold;">Số điện thoại</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- <label for="soFax" style="font-weight: bold;">Số Fax</label>
+        <input size="40" type="text" formControlName="soFax" placeholder="Nhập số Fax"> -->
+        <nz-form-item style="margin-left: 130px;">
+          <nz-form-label [nzSpan]="0" nzFor="soFax" style="font-weight: bold;">Số Fax</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input size="30" nz-input type="text" placeholder="Nhập số Fax" formControlName="soFax">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <!-- <label for="email" style="font-weight: bold;">Email</label>
+        <input style="margin-left: 57px;" type="text" formControlName="email" placeholder="Nhập email"> -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="0" nzFor="email" style="font-weight: bold;">Email</nz-form-label>
+          <nz-form-control [nzSpan]="0">
+            <input nz-input type="text" placeholder="Nhập email" formControlName="email">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+  <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+    Lưu
+  </button>
+  <button class="back" nz-button nzType="primary" (click)="back()">
+    Trở về
+  </button>
+</div>

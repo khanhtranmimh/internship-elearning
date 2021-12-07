@@ -1,0 +1,59 @@
+<span style="font-size: 27px;">01GTKT-Hóa đơn giá trị gia tăng</span>
+<br><br>
+<div style="position: relative;">
+    <!-- <span *ngIf="flag===false Then hd1 else hd2"></span> -->
+    <!-- <ng-template #hd1> -->
+    <button #buttonThem nz-button nzType="primary" (click)="addInvoice()">
+        <i nz-icon nzType="plus" nzTheme="outline"></i>Lập Hóa Đơn
+    </button>
+
+    <div style="width: 400px; position: absolute; right: 0%; top: 0%;">
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+        </ng-template>
+    </div>
+
+    <div class="tableInvoice" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+        <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
+            [nzPageSize]="pageSize" [nzTotal]="total">
+            <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Người tạo / Nguồn</th>
+                    <th>Trạng thái</th>
+                    <th>Hóa đơn</th>
+                    <th>Bên bán</th>
+                    <th>Tổng tiền hàng</th>
+                    <th>Tổng tiền thuế</th>
+                    <th>Tổng thanh toán</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>
+                        <input type="checkbox" [(ngModel)]="checked" >
+                    </td>
+                    <td>{{data.acc}}</td>
+                    <td>{{data.tt}}</td>
+                    <td>{{data.hd}}</td>
+                    <td>{{data.bb}}</td>
+                    <td>{{data.tongtienhang}}</td>
+                    <td>{{data.tongtienthue}}</td>
+                    <td>{{data.tongtt}}</td>
+
+                    <!-- <td>
+            <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
+                title="Xóa" (click)="removeInvoice(data.id)"></i></a>
+            &emsp;
+            <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
+                (click)="editInvoice(data.id)"></i></a>
+          </td> -->
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

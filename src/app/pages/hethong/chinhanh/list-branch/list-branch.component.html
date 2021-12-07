@@ -16,7 +16,7 @@
     </ng-template>
   </div>
 
-  <div style="border-top: 2px solid rgb(83, 83, 190); margin-top: 50px">
+  <div class="tableBranch" style="border-top: 2px solid #66CCFF; margin-top: 50px">
     <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
       [nzPageSize]="pageSize" [nzTotal]="total">
       <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
@@ -37,6 +37,12 @@
           <td>{{data.nameBranch}}</td>
           <td>{{data.address}}</td>
           <td>{{data.status}}</td>
+          <!-- <td>{{data.id}}</td>
+          <td>{{data.toanha}}</td>
+          <td>{{data.tang}}</td>
+          <td>{{data.sogiuong}}</td>
+          <td>{{data.songuoitoida}}</td> -->
+
           <td>
             <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close" nzTheme="outline"
                 title="Xóa" (click)="removeBranch(data.id)"></i></a>

@@ -17,6 +17,9 @@ export class BranchFormComponent implements OnInit {
   // backList:boolean = false;
   isShowCreateOrUpdate: boolean= false; //false: tạo, true: sửa
   ids = this.route.snapshot.paramMap.get('id');
+
+  //ids = this.route.snapshot.paramMap.get('_id');
+
   flag = true;
 
   submitForm: FormGroup;
@@ -85,6 +88,12 @@ export class BranchFormComponent implements OnInit {
           nameBranch: this.submitForm.get('tenchinhanh')?.value,
           address: this.submitForm.get('diachi')?.value,
           status: "false",
+
+          // id: this.submitForm.get('MST')?.value,
+          // toanha: this.submitForm.get('tenmien')?.value,
+          // tang: this.submitForm.get('tenchinhanh')?.value,
+          // sogiuong: this.submitForm.get('diachi')?.value,
+
         }
         this.branchService.createBranch(params).subscribe((data) => {
           this._location.back();

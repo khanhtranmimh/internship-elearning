@@ -1,0 +1,13 @@
+.luu{
+    position: absolute;
+    right: 100px;
+    border: #4caf50; background-color: #4caf50;
+}
+.back{
+    position: absolute;
+    right: 0px;
+    border: #4caf50; background-color: #4caf50;
+}
+.tableInvoiceDetail nz-table tr th{
+    background-color: #cde5fd;
+}
