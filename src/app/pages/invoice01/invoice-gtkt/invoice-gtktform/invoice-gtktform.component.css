@@ -11,3 +11,6 @@
 .tableInvoiceDetail nz-table tr th{
     background-color: #cde5fd;
 }
+i{
+    vertical-align: 1px;
+}
