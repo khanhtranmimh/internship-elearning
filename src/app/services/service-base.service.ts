@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class ServiceBaseService {
   private REST_API_SERVER = 'https://localhost:44332/';
-  //private REST_API_SERVER = 'https://cnpm-server-production.up.railway.app/api/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
