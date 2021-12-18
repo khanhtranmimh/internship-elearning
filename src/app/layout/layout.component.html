@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<!-- <nz-layout class="app-layout">
     <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
@@ -11,13 +11,13 @@
             <li nz-submenu nzOpen nzTitle="Hệ Thống" nzIcon="radius-setting">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="chinhanh">Quản lý chi nhánh</a>
+                        <a routerLink="hethong/chinhanh">Quản lý chi nhánh</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="quyen">Quản lý quyền</a>
+                        <a routerLink="hethong/quyen">Quản lý quyền</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="taikhoan">Quản lý tài khoản</a>
+                        <a routerLink="hethong/taikhoan">Quản lý tài khoản</a>
                     </li>
                 </ul>
             </li>
@@ -45,10 +45,10 @@
                 </span>
             </div>
         </nz-header>
-        <!-- <nz-content>
+        <nz-content>
             <div class="inner-content">
-                <app-root></app-root>
+                <router-outlet></router-outlet>
             </div>
-        </nz-content> -->
+        </nz-content>
     </nz-layout>
-</nz-layout>
+</nz-layout> -->

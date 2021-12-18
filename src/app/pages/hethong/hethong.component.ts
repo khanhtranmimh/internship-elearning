@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hethong.component.css']
 })
 export class HethongComponent implements OnInit {
-
+  isCollapsed = false;
   constructor() { }
 
   ngOnInit(): void {
