@@ -13,15 +13,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { LoginModule } from './login/login.module';
 import { LayoutComponent } from './layout/layout.component';
+import { LoginModule } from './login/login.module';
 
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ registerLocaleData(en);
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
   exports:[
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ]
 })
 export class AppModule { }

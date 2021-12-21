@@ -17,7 +17,6 @@ import { ListPermissionComponent } from './quyen/list-permission/list-permission
 import { FormPermissionComponent } from './quyen/form-permission/form-permission.component';
 import { ListAccComponent } from './taikhoan/list-acc/list-acc.component';
 import { FormAccComponent } from './taikhoan/form-acc/form-acc.component';
-import { AppModule } from 'src/app/app.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +37,7 @@ import { AppModule } from 'src/app/app.module';
     AntDesignModule,
     NzFormModule,
     ReactiveFormsModule,
-    FormsModule,
-    AppModule
+    FormsModule
   ]
 })
 export class HethongModule { }
