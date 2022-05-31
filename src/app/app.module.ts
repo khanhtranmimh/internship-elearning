@@ -15,6 +15,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginModule } from './login/login.module';
+import { AntDesignModule } from './share/ant-design.module';
 
 
 registerLocaleData(en);
@@ -33,7 +34,8 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    LoginModule
+    LoginModule,
+    AntDesignModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

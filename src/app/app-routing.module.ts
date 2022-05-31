@@ -4,8 +4,9 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: 'login', component: LoginComponent },
+  // { path: '', pathMatch: 'full', redirectTo: '/login' },
+  // { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/hethong' },
   {path: '', component: LayoutComponent, 
     children: [
     { path: 'hethong', loadChildren: () => import('./pages/hethong/hethong.module').then(m => m.HethongModule) },

@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<!-- <nz-layout class="app-layout">
     <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
@@ -52,4 +52,30 @@
             </div>
         </nz-content>
     </nz-layout>
+</nz-layout> -->
+
+<nz-layout>
+  <nz-header>
+    <div>
+        <img style="margin-top: -10px;" width="50px" height="50px" src="../assets/icon/icon-idea.png" alt="logo">
+        <span class="nl">Nguyên Lý Hệ Điều Hành</span>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <!-- <li nz-menu-item nzIcon="radius-setting">
+        <a routerLink="hethong/chinhanh">SJF Timeout</a>
+      </li>
+      <li nz-menu-item nzIcon="radius-setting">nav 2</li> -->
+      <!-- <li nz-menu-item>nav 3</li> -->
+    </ul>
+  </nz-header>
+  <nz-content>
+    <!-- <nz-breadcrumb>
+      <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+      <nz-breadcrumb-item>List</nz-breadcrumb-item>
+      <nz-breadcrumb-item>App</nz-breadcrumb-item>
+    </nz-breadcrumb> -->
+    <div class="inner-content">
+        <router-outlet></router-outlet>
+    </div>
+  </nz-content>
 </nz-layout>
