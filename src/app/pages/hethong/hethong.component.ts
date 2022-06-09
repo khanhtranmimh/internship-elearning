@@ -17,6 +17,9 @@ export interface ITientrinh {
 })
 
 export class HethongComponent implements OnInit {
+  soLuongTT = 0;
+  data: any;
+  flagTableDocQuyen = false;
   isVisible = false;
   submitFormDetails: FormGroup;
   tienTrinhs: ITientrinh[] = [];
@@ -141,7 +144,38 @@ export class HethongComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    // console.log("test:", this.tienTrinhs);
+    this.tienTrinhs = [
+      {
+        "id": 1.5,
+        "tientrinh": "P1",
+        "thoigianxuly": "4",
+        "thoidiem": "0"
+      },
+      {
+        "id": 2.5,
+        "tientrinh": "P2",
+        "thoigianxuly": "10",
+        "thoidiem": "2"
+      },
+      {
+        "id": 3.5,
+        "tientrinh": "P3",
+        "thoigianxuly": "2",
+        "thoidiem": "4"
+      }
+    ]
+    this.soLuongTT = this.tienTrinhs.length;
+    let numbers: number[] = [];
+    this.tienTrinhs.forEach(element => {
+      numbers.push(Number(element.thoidiem));
+    });
+    // console.log(numbers);
+    // console.log(this.soLuongTT);
+    let minInNumbers = Math.min.apply(Math, numbers);
+    //console.log("nhỏ nhất:", minInNumbers);
+    //
+    this.flagTableDocQuyen = true;
   }
 
   back() {

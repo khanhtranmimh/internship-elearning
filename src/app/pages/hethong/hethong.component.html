@@ -1,83 +1,104 @@
 <span style="font-size: 27px">SJF - Độc quyền</span> <br /><br />
-    <div style="border-top: 3px solid #66ccff">
-        <div style="position: relative; border-bottom: 1px solid #dddddd; height: 40px; margin-top: 10px; display: flex;">
-            <div>
-                <span style="font-size: 18px; color: #333333"> Tiến trình </span>
-            </div>
-            <div style="position: absolute; right: 20px; display: flex">
-                <button (click)="showModal()"
-                    style="border: #4caf50; background-color: #4caf50" nz-button nzType="primary" nzShape="circle">
-                    <i nz-icon nzType="plus"></i>
-                </button>
-
-
-                <nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm mới tiến trình"
-                    (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-                    <form nz-form [formGroup]="submitFormDetails">
-                        <ng-container *nzModalContent>
-                            <div class="form-group" nz-row>
-                                <nz-form-label nz-col nzSpan="8" nzFor="tientrinh" style="font-weight: bold;">
-                                    Tiến Trình
-                                </nz-form-label>
-                                <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập tiến trình">
-                                    <input nz-input type="text" formControlName="tientrinh">
-                                </nz-form-control>
-                            </div><br>
-                            <div class="form-group" nz-row>
-                                <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="font-weight: bold;">Thời gian xử lý</nz-form-label>
-                                <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập thời gian xử lý">
-                                    <input nz-input type="text" formControlName="thoigianxuly">
-                                </nz-form-control>
-                            </div><br>
-                            <div class="form-group" nz-row>
-                                <nz-form-label nz-col nzSpan="8" nzFor="thoidiem" style="font-weight: bold;">Thời điểm
-                                </nz-form-label>
-                                <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập thời điểm">
-                                    <input nz-input type="text" formControlName="thoidiem">
-                                </nz-form-control>
-                            </div>
-                        </ng-container>
-                    </form>
-                </nz-modal>
-            </div>
+<div style="border-top: 3px solid #66ccff">
+    <div style="position: relative; border-bottom: 1px solid #dddddd; height: 40px; margin-top: 10px; display: flex;">
+        <div>
+            <span style="font-size: 18px; color: #333333"> Tiến trình </span>
         </div>
+        <div style="position: absolute; right: 20px; display: flex">
+            <button (click)="showModal()" style="border: #4caf50; background-color: #4caf50" nz-button nzType="primary"
+                nzShape="circle">
+                <i nz-icon nzType="plus"></i>
+            </button>
 
-        <div class="tableTienTrinh" style="margin-top: 20px;">
-            <nz-table #tableList #basicTable [nzData]="tienTrinhs" [nzPageIndex]="pageIndex" [nzPageSize]="pageSize"
-                [nzTotal]="total">
-                <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tiến trình</th>
-                        <th>Thời gian xử lý</th>
-                        <th>Thời điểm</th>
-                        <th style="text-align: center;">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of basicTable.data; let i = index">
-                        <td>
-                            {{ i + 1 }}
-                        </td>
-                        <td>{{ data.tientrinh }}</td>
-                        <td>{{ data.thoigianxuly }}</td>
-                        <td>{{ data.thoidiem }}</td>
 
-                        <td style="text-align: center;">
-                            <a><i style="color: red; margin-right: 10px; font-size: 20px" nz-icon nzType="close"
-                                    nzTheme="outline" title="Xóa" (click)="removeTienTrinh(data.id)"></i></a>
-                            &emsp;
-                            <a><i style="font-size: 20px" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
-                                    (click)="editTienTrinh(data.id)"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </nz-table>
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm mới tiến trình" (nzOnCancel)="handleCancel()"
+                (nzOnOk)="handleOk()">
+                <form nz-form [formGroup]="submitFormDetails">
+                    <ng-container *nzModalContent>
+                        <div class="form-group" nz-row>
+                            <nz-form-label nz-col nzSpan="8" nzFor="tientrinh" style="font-weight: bold;">
+                                Tiến Trình
+                            </nz-form-label>
+                            <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập tiến trình">
+                                <input nz-input type="text" formControlName="tientrinh">
+                            </nz-form-control>
+                        </div><br>
+                        <div class="form-group" nz-row>
+                            <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="font-weight: bold;">Thời gian
+                                xử lý</nz-form-label>
+                            <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập thời gian xử lý">
+                                <input nz-input type="text" formControlName="thoigianxuly">
+                            </nz-form-control>
+                        </div><br>
+                        <div class="form-group" nz-row>
+                            <nz-form-label nz-col nzSpan="8" nzFor="thoidiem" style="font-weight: bold;">Thời điểm
+                            </nz-form-label>
+                            <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập thời điểm">
+                                <input nz-input type="text" formControlName="thoidiem">
+                            </nz-form-control>
+                        </div>
+                    </ng-container>
+                </form>
+            </nz-modal>
         </div>
     </div>
+
+    <div class="tableTienTrinh" style="margin-top: 20px;">
+        <nz-table #tableList #basicTable [nzBordered]="true" [nzData]="tienTrinhs" [nzPageIndex]="pageIndex" [nzPageSize]="pageSize"
+            [nzTotal]="total">
+            <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tiến trình</th>
+                    <th>Thời gian xử lý</th>
+                    <th>Thời điểm</th>
+                    <th style="text-align: center;">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data; let i = index">
+                    <td>
+                        {{ i + 1 }}
+                    </td>
+                    <td>{{ data.tientrinh }}</td>
+                    <td>{{ data.thoigianxuly }}</td>
+                    <td>{{ data.thoidiem }}</td>
+
+                    <td style="text-align: center;">
+                        <a><i style="color: red; margin-right: 10px; font-size: 20px" nz-icon nzType="close"
+                                nzTheme="outline" title="Xóa" (click)="removeTienTrinh(data.id)"></i></a>
+                        &emsp;
+                        <a><i style="font-size: 20px" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
+                                (click)="editTienTrinh(data.id)"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
     <button class="luu" nz-button nzType="primary" (click)="onSubmit()">Tính toán</button>
     <button class="back" nz-button nzType="dashed" (click)="back()">Làm mới</button>
+</div>
+
+<!-- //tính -->
+<!-- <div *ngIf="flagTableDocQuyen == true" class="tableTienTrinh" style="margin-top: 20px;"> -->
+<div class="tableTienTrinh" style="margin-top: 20px;">
+    <nz-table #tableList #basicTable [nzBordered]="true" [nzData]="data">
+        <thead>
+            <tr>
+                <th rowSpan="2">Thời điểm</th>
+                <th colSpan="{{soLuongTT}}">Tiến trình</th>
+            </tr>
+            <tr>
+                <th *ngFor="let data of tienTrinhs">{{data.tientrinh}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+    </nz-table>
 </div>
