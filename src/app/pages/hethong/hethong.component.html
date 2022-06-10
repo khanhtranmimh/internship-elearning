@@ -86,7 +86,7 @@
 <!-- //tính -->
 <!-- <div *ngIf="flagTableDocQuyen == true" class="tableTienTrinh" style="margin-top: 20px;"> -->
 <div class="tableTienTrinh" style="margin-top: 20px;">
-    <nz-table #tableList #basicTable [nzBordered]="true" [nzData]="data">
+    <nz-table #tableList #basicTable [nzBordered]="true" [nzData]="dataF">
         <thead>
             <tr>
                 <th rowSpan="2">Thời điểm</th>
@@ -97,7 +97,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let data of dataF">
+                
             </tr>
         </tbody>
     </nz-table>
