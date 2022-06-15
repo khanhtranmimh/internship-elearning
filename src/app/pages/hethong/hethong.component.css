@@ -1,6 +1,11 @@
-.luu{
+.sjf{
   position: absolute;
-  right: 100px;
+  right: 365px;
+  border: #4caf50; background-color: #4caf50;
+}
+.sjfKhong{
+  position: absolute;
+  right: 130px;
   border: #4caf50; background-color: #4caf50;
 }
 .back{

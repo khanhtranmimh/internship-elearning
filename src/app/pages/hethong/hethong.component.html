@@ -1,4 +1,4 @@
-<span style="font-size: 27px">SJF - Độc quyền</span> <br /><br />
+<span style="font-size: 27px">Thuật toán SJF</span> <br /><br />
 <div style="border-top: 3px solid #66ccff">
     <div style="position: relative; border-bottom: 1px solid #dddddd; height: 40px; margin-top: 10px; display: flex;">
         <div>
@@ -79,13 +79,14 @@
 </div>
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
-    <button class="luu" nz-button nzType="primary" (click)="onSubmit()">Tính toán</button>
+    <button class="sjf" nz-button nzType="primary" (click)="onSubmitSJF()">Tính SJF độc quyền</button>
+    <button class="sjfKhong" nz-button nzType="primary" (click)="onSubmitSFFKhongDocQuyen()">Tính SJF không độc quyền</button>
     <button class="back" nz-button nzType="dashed" (click)="back()">Làm mới</button>
 </div>
 
 <!-- //tính -->
 <!-- <div *ngIf="flagTableDocQuyen == true" class="tableTienTrinh" style="margin-top: 20px;"> -->
-<div class="tableTienTrinh" style="margin-top: 20px;">
+<div *ngIf="flagTableDocQuyen == true" class="tableTienTrinh" style="margin-top: 20px;">
     <nz-table [nzFrontPagination]="false" #tableList #basicTable [nzBordered]="true" [nzData]="dataF">
         <thead>
             <tr>

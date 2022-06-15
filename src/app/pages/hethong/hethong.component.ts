@@ -26,7 +26,7 @@ export interface IData {
 
 export class HethongComponent implements OnInit {
   soLuongTT = 0;
-  dataF : any;
+  dataF: any;
   flagTableDocQuyen = false;
   isVisible = false;
   submitFormDetails: FormGroup;
@@ -66,19 +66,32 @@ export class HethongComponent implements OnInit {
   }
 
   handleOk(): void {
-    if (this.tienTrinhs.find(x => x.tientrinh == this.submitFormDetails.get('tientrinh')?.value)) {
+    // if (this.tienTrinhs.find(x => x.tientrinh == this.submitFormDetails.get('tientrinh')?.value)) {
+    //   this.modal.error({
+    //     nzTitle: 'Lỗi',
+    //     nzContent: 'Đã tồn tại tiến trình.'
+    //   });
+    // }
+    if (isNaN(this.submitFormDetails.get('thoigianxuly')?.value) || isNaN(this.submitFormDetails.get('thoidiem')?.value)) {
       this.modal.error({
         nzTitle: 'Lỗi',
-        nzContent: 'Đã tồn tại tiến trình.'
+        nzContent: 'Sai định dạng dữ liệu. Vui lòng nhập chữ số vào ô Thời gian xử lý và Thời điểm'
       });
     }
     else {
-      if (isNaN(this.submitFormDetails.get('thoigianxuly')?.value) || isNaN(this.submitFormDetails.get('thoidiem')?.value)) {
+      if (this.tienTrinhs.find(x => x.tientrinh == this.submitFormDetails.get('tientrinh')?.value) && this.flagCreateorUpdateInvoiceDetail == true) {
         this.modal.error({
           nzTitle: 'Lỗi',
-          nzContent: 'Sai định dạng dữ liệu. Vui lòng nhập chữ số vào ô Thời gian xử lý và Thời điểm'
+          nzContent: 'Đã tồn tại tiến trình.'
         });
       }
+      // if (isNaN(this.submitFormDetails.get('thoigianxuly')?.value) || isNaN(this.submitFormDetails.get('thoidiem')?.value)) {
+      //   this.modal.error({
+      //     nzTitle: 'Lỗi',
+      //     nzContent: 'Sai định dạng dữ liệu. Vui lòng nhập chữ số vào ô Thời gian xử lý và Thời điểm'
+      //   });
+      // }
+
       else {
         const validDetail = this.submitFormDetails.valid;
         if (validDetail) {
@@ -156,35 +169,40 @@ export class HethongComponent implements OnInit {
     this.showModal();
   }
 
-  onSubmit() {
-    // console.log("test:", this.tienTrinhs);
+  onSubmitSJF() {
+    this.flagTableDocQuyen = true;
+    this.soLuongTT = this.tienTrinhs.length;
     let ans = [];
-    this.tienTrinhs = [
-      {
-        "id": 1.5,
-        "tientrinh": "P1",
-        "thoigianxuly": 4,
-        "thoidiem": 0
-      },
-      {
-        "id": 2.5,
-        "tientrinh": "P2",
-        "thoigianxuly": 3,
-        "thoidiem": 6
-      },
-      {
-        "id": 3.5,
-        "tientrinh": "P3",
-        "thoigianxuly": 6,
-        "thoidiem": 4
-      },
-      {
-        "id": 4.5,
-        "tientrinh": "P4",
-        "thoigianxuly": 8,
-        "thoidiem": 3
-      }
-    ];
+    for (let i = 0; i < this.tienTrinhs.length; i++) {
+      this.tienTrinhs[i].thoidiem = Number(this.tienTrinhs[i].thoidiem);
+      this.tienTrinhs[i].thoigianxuly = Number(this.tienTrinhs[i].thoigianxuly);
+    }
+    // this.tienTrinhs = [
+    //   {
+    //     "id": 1.5,
+    //     "tientrinh": "P1",
+    //     "thoigianxuly": 4,
+    //     "thoidiem": 0
+    //   },
+    //   {
+    //     "id": 2.5,
+    //     "tientrinh": "P2",
+    //     "thoigianxuly": 3,
+    //     "thoidiem": 6
+    //   },
+    //   {
+    //     "id": 3.5,
+    //     "tientrinh": "P3",
+    //     "thoigianxuly": 6,
+    //     "thoidiem": 4
+    //   },
+    //   {
+    //     "id": 4.5,
+    //     "tientrinh": "P4",
+    //     "thoigianxuly": 8,
+    //     "thoidiem": 3
+    //   }
+    // ];
 
     //sắp xếp tăng dần đầu vào
     //this.tienTrinhs.sort((a, b) => (a.thoidiem > b.thoidiem) ? 1 : -1)
@@ -232,7 +250,149 @@ export class HethongComponent implements OnInit {
     this.dataF = ans;
   }
 
+  onSubmitSFFKhongDocQuyen() {
+    this.flagTableDocQuyen = true;
+    this.soLuongTT = this.tienTrinhs.length;
+    let ans = [];
+    for (let i = 0; i < this.tienTrinhs.length; i++) {
+      this.tienTrinhs[i].thoidiem = Number(this.tienTrinhs[i].thoidiem);
+      this.tienTrinhs[i].thoigianxuly = Number(this.tienTrinhs[i].thoigianxuly);
+    }
+    // this.tienTrinhs = [
+    //   {
+    //     "id": 1.5,
+    //     "tientrinh": "P1",
+    //     "thoigianxuly": 4,
+    //     "thoidiem": 0
+    //   },
+    //   {
+    //     "id": 2.5,
+    //     "tientrinh": "P2",
+    //     "thoigianxuly": 3,
+    //     "thoidiem": 6
+    //   },
+    //   {
+    //     "id": 3.5,
+    //     "tientrinh": "P3",
+    //     "thoigianxuly": 6,
+    //     "thoidiem": 4
+    //   },
+    //   {
+    //     "id": 4.5,
+    //     "tientrinh": "P4",
+    //     "thoigianxuly": 8,
+    //     "thoidiem": 3
+    //   },
+    //   {
+    //     "id": 5.5,
+    //     "tientrinh": "P5",
+    //     "thoigianxuly": 10,
+    //     "thoidiem": 3
+    //   }
+    // ];
+
+    //sắp xếp tăng dần đầu vào
+    //this.tienTrinhs.sort((a, b) => (a.thoidiem > b.thoidiem) ? 1 : -1)
+    let a: number[] = [];
+    let b: number[] = [];
+    //let sum: number = 0;
+    let temp = null;
+    let vao = 0;
+    let pos = -1;
+    this.tienTrinhs.forEach(element => {
+      a.push(element.thoidiem);
+      b.push(element.thoigianxuly);
+    });
+    let a1: number[] = [];
+    let i = Math.min.apply(Math, a);
+    let truocI = -1;
+    let batDauHetTĐ = 0;
+    let lonNhatThoiDiem = Math.max.apply(Math, a);
+    let dungLap = false;
+
+    while (!dungLap) {
+      let c = [];
+      if (vao == 1) {
+        c[pos + 1] = (temp == null ? 0 : temp) - (i - truocI);
+        b[pos] = c[pos + 1];
+      }
+
+      if (batDauHetTĐ == 1) {
+        c[pos + 1] = 0;
+        b[pos] = 0;
+      }
+      //reset pos với temp
+      pos = -1;
+      temp = null;
+      c[0] = i;
+      for (let j = 0; j < b.length; j++) {
+        //Nếu là tt bị trừ đi thì sẽ không vào nữa. (T2)
+        if (a[j] <= i && b[j] != -1) {
+          c[j + 1] = b[j];
+          //qđ lấy tt nào.
+          if (b[j] == 0) {
+            b[j] = -1;
+          }
+          if (temp == null || b[j] < temp) {
+            if (b[j] != -1) {
+              temp = b[j];
+              pos = j;
+            }
+          }
+        }
+        else {
+          c[j + 1] = '';
+        }
+      }
+
+
+
+      if (a1.length != 0) {
+        a1 = a1.filter(x => x != i);
+      }
+      else {
+        a1 = a.filter(x => x != i);
+      }
+
+      let i1 = Math.min.apply(Math, a1);
+      if (i < lonNhatThoiDiem) {
+        if ((i1 - i) > (temp == null ? 0 : temp)) {
+          truocI = i;
+          i = i + (temp == null ? 0 : temp);
+          vao = 1;
+        }
+        else {
+          truocI = i;
+          i = i1;
+          vao = 1;
+        }
+      }
+      else {
+        i = i + (temp == null ? 0 : temp);
+        batDauHetTĐ = 1;
+      }
+
+      ans.push(c);
+      // console.log("dataatesst:", ans);
+      // console.log("aaaa:", i1 + "i:" + i + "temp:" + temp);
+      // console.log("a1:", a1);
+      for (let i = 0; i < b.length; i++) {
+        if (b[i] == -1) {
+          dungLap = true;
+        }
+        else {
+          dungLap = false;
+          break
+        }
+      }
+      // console.log("b:", b)
+      // console.log("dung:", dungLap);
+    }
+    this.dataF = ans;
+  }
+
   back() {
     this.tienTrinhs = [];
+    this.flagTableDocQuyen = false;
   }
 }
